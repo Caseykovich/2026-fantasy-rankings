@@ -1,0 +1,9 @@
+{
+  "project": "2026 Fantasy Football Rankings",
+  "published_at": "2026-09-09",
+  "scoring_format": "Half PPR",
+  "ranked_players": 477,
+  "current_snapshot": "data/snapshots/2026-09-09_bowers-injury-update.csv",
+  "sha256": "2c438bc58d7ea6a871008b49f10dd43f1a5a2e2eec8c736bb697c83f4949d4e7"
+}
+
