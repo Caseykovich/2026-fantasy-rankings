@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Searchable 2026 half-PPR fantasy football rankings with dated snapshots and transparent methodology." />
+    <title>2026 Fantasy Football Rankings</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="./" aria-label="2026 Fantasy Football Rankings home">
+          <span class="brand-mark" aria-hidden="true">26</span>
+          <span>
+            <strong>Fantasy Rankings</strong>
+            <small>2026 redraft board</small>
+          </span>
+        </a>
+        <nav aria-label="Project links">
+          <a href="https://github.com/Caseykovich/2026-fantasy-rankings/blob/main/docs/METHODOLOGY.md">Methodology</a>
+          <a href="https://github.com/Caseykovich/2026-fantasy-rankings/releases/tag/2026-09-09">Release</a>
+          <a class="nav-primary" href="./rankings.csv" download>Download CSV</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Updated September 9, 2026</p>
+          <h1 id="page-title">2026 Fantasy Football Rankings</h1>
+          <p class="lede">Half-PPR rankings built for 1 QB, 2 RB, 3 WR, 1 TE and 1 FLEX. Search the full board or narrow it by position, team and roster status.</p>
+        </div>
+        <div class="release-note">
+          <span>Latest change</span>
+          <strong>Brock Bowers: 34 → 40</strong>
+          <p>Adjusted after a meniscus procedure. He remains TE2.</p>
+        </div>
+      </section>
+
+      <section class="summary" aria-label="Ranking summary">
+        <article>
+          <span>Ranked players</span>
+          <strong id="totalPlayers">—</strong>
+        </article>
+        <article>
+          <span>Visible results</span>
+          <strong id="visiblePlayers">—</strong>
+        </article>
+        <article>
+          <span>Scoring</span>
+          <strong>Half PPR</strong>
+        </article>
+        <article>
+          <span>ADP refreshed</span>
+          <strong>Sep. 9</strong>
+        </article>
+      </section>
+
+      <section class="rankings-panel" aria-labelledby="rankings-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="section-label">Full ranking board</p>
+            <h2 id="rankings-heading">Find a player</h2>
+          </div>
+          <button id="resetFilters" class="text-button" type="button">Reset filters</button>
+        </div>
+
+        <div class="filters" role="search">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="Player, team or position" autocomplete="off" />
+          </label>
+          <label>
+            <span>Position</span>
+            <select id="positionFilter">
+              <option value="">All positions</option>
+              <option value="QB">Quarterbacks</option>
+              <option value="RB">Running backs</option>
+              <option value="WR">Wide receivers</option>
+              <option value="TE">Tight ends</option>
+            </select>
+          </label>
+          <label>
+            <span>Team</span>
+            <select id="teamFilter">
+              <option value="">All teams</option>
+            </select>
+          </label>
+          <label>
+            <span>Roster status</span>
+            <select id="statusFilter">
+              <option value="">All statuses</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th><button data-sort="RANK" type="button">Rank <span aria-hidden="true">↕</span></button></th>
+                <th><button data-sort="Player" type="button">Player <span aria-hidden="true">↕</span></button></th>
+                <th><button data-sort="Team" type="button">Team <span aria-hidden="true">↕</span></button></th>
+                <th><button data-sort="POS" type="button">Pos <span aria-hidden="true">↕</span></button></th>
+                <th><button data-sort="ADP" type="button">ADP <span aria-hidden="true">↕</span></button></th>
+                <th><button data-sort="Value" type="button">Value <span aria-hidden="true">↕</span></button></th>
+                <th><button data-sort="Pos Rank" type="button">Pos rank <span aria-hidden="true">↕</span></button></th>
+                <th><button data-sort="Proj Pts" type="button">Proj. pts <span aria-hidden="true">↕</span></button></th>
+                <th><button data-sort="Roster Status" type="button">Status <span aria-hidden="true">↕</span></button></th>
+                <th>Change notes</th>
+              </tr>
+            </thead>
+            <tbody id="rankingsBody"></tbody>
+          </table>
+          <div id="loadingState" class="state-message">Loading rankings…</div>
+          <div id="emptyState" class="state-message" hidden>No players match these filters.</div>
+          <div id="errorState" class="state-message error" hidden>Rankings could not be loaded. The downloadable CSV remains available above.</div>
+        </div>
+
+        <div class="pagination" aria-label="Ranking pages">
+          <button id="previousPage" type="button">Previous</button>
+          <span id="pageStatus" aria-live="polite">Page 1</span>
+          <button id="nextPage" type="button">Next</button>
+        </div>
+      </section>
+
+      <section class="methodology" aria-labelledby="methodology-title">
+        <div>
+          <p class="section-label">How to read the board</p>
+          <h2 id="methodology-title">Rankings and market price are separate</h2>
+        </div>
+        <div class="method-grid">
+          <p><strong>Rank</strong> reflects projected production, positional scarcity, role, health and replacement value for the stated lineup.</p>
+          <p><strong>ADP</strong> is a market reference compiled from Yahoo, DraftKings, Underdog and NFC/NFFC inputs.</p>
+          <p><strong>Snapshots</strong> are dated and preserved so later evaluations use only information available when the rankings were published.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Independent 2026 fantasy football rankings.</p>
+      <p><a href="https://github.com/Caseykovich/2026-fantasy-rankings">Data, snapshots and change history on GitHub</a></p>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
+
